@@ -22,3 +22,12 @@ class CheckoutService:
 
     def checkout(self, amount):
         self.payment_gateway.initiate_payment(amount)
+
+if __name__ == "__main__":
+    strip_gateway = StripePayment()
+    checkout_service = CheckoutService(strip_gateway)
+    checkout_service.checkout(120.50) # Output: Processing payment via stripe: $120.5
+
+    razorpay_gateway = RajorpayPayment()
+    checkout_service.set_payment_gateway(razorpay_gateway)
+    checkout_service.checkout(150.50) # Output: Processing payment via Razorpay: ruppees 150.5
