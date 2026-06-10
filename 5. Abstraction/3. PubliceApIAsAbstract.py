@@ -17,15 +17,11 @@ class Databaseclient:
     def __initialize_connection_pool(self) -> None: pass
     def __parse_query(self, sql:str) -> str: return sql.strip()
     def __execute_with_retry(self, query:str) -> str:
-
         for i in range(self.__retry_attempts):
-
             try:
                 return self.__execute_query()
-            
             except Exception:
                 if i == self.__retry_attempts - 1:
                     raise
-
         return ""
     def __execute_query(self, query:str) ->str: return "result"
