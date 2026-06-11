@@ -26,6 +26,23 @@ class ElectricCar(Vehicle):
 class GasCar(Vehicle):
     def __init__(self, make:str, model:str, year:str, fuel_tank_size:float):
         super().__init__(make, model, year)
-
+        self._fuel_tank_size = fuel_tank_size
     def fill_bank(self):
         print(f"Filling {self._fuel_tank_size}L fuel tank")
+
+
+if __name__ == "__main__":
+    my_electric_car = ElectricCar("Tesla", "Model 3", 2021, 75)
+    my_gas_car = GasCar("Toyota", "Camry", 2020, 50)
+
+    my_electric_car.display_info()
+    my_electric_car.start_engine()
+    my_electric_car.charge_battery()
+    my_electric_car.stop_engine()
+
+    print()
+
+    my_gas_car.display_info()
+    my_gas_car.start_engine()
+    my_gas_car.fill_bank()
+    my_gas_car.stop_engine()
